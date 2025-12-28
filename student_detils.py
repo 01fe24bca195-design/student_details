@@ -1,4 +1,5 @@
 # Student Grade Calculator
+import os:
 
 def calculate_grade(avg):
     if 90 <= avg <= 100:
@@ -16,18 +17,19 @@ def calculate_grade(avg):
 
 def main():
     # Accept student details
-    name = input("Enter student name: ")
-    department = input("Enter department: ")
-    semester = input("Enter semester: ")
+    name = "sri gouri"
+    department = "BCA"
+    semester = 3
 
-    # Accept marks in three subjects
     marks = []
-    for i in range(1, 4):
-        mark = float(input(f"Enter marks for subject {i}: "))
-        marks.append(mark)
+    sample_mark=[75,82,68]
+    
+    for i in range(len(sample_mark)):
+        marks.append(sample_mark[i])
+        
+        avg = sum(marks) / len(marks)
 
-    # Calculate average
-    avg = sum(marks) / 3
+    
 
     # Determine grade
     grade = calculate_grade(avg)
