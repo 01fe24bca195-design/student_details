@@ -1,5 +1,5 @@
 # Student Grade Calculator
-import os:
+
 
 def calculate_grade(avg):
     if 90 <= avg <= 100:
