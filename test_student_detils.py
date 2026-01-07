@@ -1,23 +1,22 @@
-import student
+import pytest
+from student_detils import calculate_grade
 
-def test_calculate_average():
-    avg = student.calculate_average(85, 90, 95)
-    assert avg == 90.0
-
-def test_grade_S():
-    assert student.calculate_grade(92) == "S"
-
-def test_grade_A():
-    assert student.calculate_grade(85) == "A"
-
-def test_grade_B():
-    assert student.calculate_grade(70) == "B"
-
-def test_grade_C():
-    assert student.calculate_grade(55) == "C"
-
-def test_grade_D():
-    assert student.calculate_grade(45) == "D"
-
-def test_grade_F():
-    assert student.calculate_grade(30) == "F"\
+@pytest.mark.parametrize(
+    "avg, expected_grade",
+    [
+        (95, "S"),   # >= 90
+        (90, "S"),
+        (89.9, "A"), # >= 80
+        (85, "A"),
+        (70, "B"),   # >= 65
+        (65, "B"),
+        (60, "C"),   # >= 50
+        (50, "C"),
+        (45, "D"),   # >= 40
+        (40, "D"),
+        (39.9, "F"), # < 40
+        (20, "F"),
+    ]
+)
+def test_calculate_grade(avg, expected_grade):
+    assert calculate_grade(avg) == expected_grade
