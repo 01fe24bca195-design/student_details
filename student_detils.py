@@ -1,47 +1,59 @@
-# Student Grade Calculator
+def show_grade_criteria():
+    print("--- Grade Criteria ---")
+    print("90 - 100 : Grade S")
+    print("80 - 89  : Grade A")
+    print("65 - 79  : Grade B")
+    print("50 - 64  : Grade C")
+    print("40 - 49  : Grade D")
+    print("Below 40 : Grade F")
+    print("----------------------\n")
 
+def show_student_details(name, dept, sem):
+    print("--- Student Details ---")
+    print(f"Name: {name}")
+    print(f"Department: {dept}")
+    print(f"Semester: {sem}\n")
+
+def show_subject_marks(m1, m2, m3):
+    print("--- Subject Marks ---")
+    print(f"Subject 1: {m1}")
+    print(f"Subject 2: {m2}")
+    print(f"Subject 3: {m3}\n")
+
+def calculate_average(m1, m2, m3):
+    return (m1 + m2 + m3) / 3
 
 def calculate_grade(avg):
-    if 90 <= avg <= 100:
+    if avg >= 90:
         return "S"
-    elif 80 <= avg <= 89:
+    elif avg >= 80:
         return "A"
-    elif 65 <= avg <= 79:
+    elif avg >= 65:
         return "B"
-    elif 50 <= avg <= 64:
+    elif avg >= 50:
         return "C"
-    elif 40 <= avg <= 49:
+    elif avg >= 40:
         return "D"
     else:
         return "F"
 
 def main():
-    # Accept student details
-    name = "sri gouri"
-    department = "BCA"
-    semester = 3
+    show_grade_criteria()
 
-    marks = []
-    sample_mark=[75,82,68]
-    
-    for i in range(len(sample_mark)):
-        marks.append(sample_mark[i])
-        
-        avg = sum(marks) / len(marks)
+    name = input("Enter Student Name: ")
+    dept = input("Enter Department: ")
+    sem = input("Enter Semester: ")
 
-    
+    m1 = int(input("Enter marks for Subject 1: "))
+    m2 = int(input("Enter marks for Subject 2: "))
+    m3 = int(input("Enter marks for Subject 3: "))
 
-    # Determine grade
-    grade = calculate_grade(avg)
+    show_student_details(name, dept, sem)
+    show_subject_marks(m1, m2, m3)
 
-    # Display student details and grade
-    print("\n--- Student Report ---")
-    print(f"Name       : {name}")
-    print(f"Department : {department}")
-    print(f"Semester   : {semester}")
-    print(f"Marks      : {marks}")
-    print(f"Average    : {avg:.2f}")
-    print(f"Grade      : {grade}")
+    avg = calculate_average(m1, m2, m3)
+    print(f"Average Marks: {avg}")
+    print(f"Final Grade: {calculate_grade(avg)}")
 
 if __name__ == "__main__":
     main()
